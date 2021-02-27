@@ -37,7 +37,7 @@ def MLP_GRU():
     
     model = Model(inputs=[mlp_ip, gru_ip], outputs=out)
 
-    adam = optimizers.Adam(lr=0.001, decay=0.0005)
+    adam = optimizers.Adam(lr=0.001, decay=0.0001)
     model.compile(loss=binary_focal_loss(), optimizer=adam, metrics=['accuracy', precision, recall, f1score])
     
     return model
@@ -76,7 +76,7 @@ def MLP_CNN():
     
     model = Model(inputs=[mlp_ip, cnn_ip], outputs=out)
 
-    adam = optimizers.Adam(lr=0.001, decay=0.0005)
+    adam = optimizers.Adam(lr=0.001, decay=0.0001)
     model.compile(loss=binary_focal_loss(), optimizer=adam, metrics=['accuracy', precision, recall, f1score])
     
     return model
@@ -126,7 +126,7 @@ def MLP_GRU_CNN():
     
     model = Model(inputs=[mlp_ip, gru_cnn_ip], outputs=out)
 
-    adam = optimizers.Adam(lr=0.001, decay=0.0005)
+    adam = optimizers.Adam(lr=0.001, decay=0.0001)
     model.compile(loss=binary_focal_loss(), optimizer=adam, metrics=['accuracy', precision, recall, f1score])
     
     return model
