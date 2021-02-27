@@ -68,3 +68,27 @@ def evaluation(y_true, y_pred):
     print('pre: ',precision_score(y_true, y_pred))
     print('rec: ',recall_score(y_true, y_pred))
     print('f1: ',f1_score(y_true, y_pred))
+    
+#additional metrics
+def recall(y_target, y_pred):
+    y_target_yn = K.round(K.clip(y_target, 0, 1))
+    y_pred_yn = K.round(K.clip(y_pred, 0, 1))
+    count_true_positive = K.sum(y_target_yn * y_pred_yn) 
+    count_true_positive_false_negative = K.sum(y_target_yn)
+    recall = count_true_positive / (count_true_positive_false_negative + K.epsilon())
+    return recall
+
+
+def precision(y_target, y_pred):
+    y_pred_yn = K.round(K.clip(y_pred, 0, 1))
+    y_target_yn = K.round(K.clip(y_target, 0, 1))
+    count_true_positive = K.sum(y_target_yn * y_pred_yn) 
+    count_true_positive_false_positive = K.sum(y_pred_yn)
+    precision = count_true_positive / (count_true_positive_false_positive + K.epsilon())
+    return precision
+
+def f1score(y_target, y_pred):
+    _recall = recall(y_target, y_pred)
+    _precision = precision(y_target, y_pred)
+    _f1score = ( 2 * _recall * _precision) / (_recall + _precision+ K.epsilon())
+    return _f1score
