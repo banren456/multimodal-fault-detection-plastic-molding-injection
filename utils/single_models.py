@@ -20,7 +20,7 @@ def MLP_tabular():
     model.add(Dense(units=8, activation='relu'))
     model.add(Dense(units=1, activation='sigmoid'))
     
-    adam = optimizers.Adam(lr=0.001, decay=0.0005)
+    adam = optimizers.Adam(lr=0.001, decay=0.0001)
     model.compile(loss=binary_focal_loss(), optimizer=adam, metrics=['accuracy',tf.keras.metrics.Precision(name='precision'),tf.keras.metrics.Recall(name='recall')])
     
     return model
@@ -44,7 +44,7 @@ def GRU_ts():
 
     model = Model(ip, out)
 
-    adam = optimizers.Adam(lr=0.001, decay=0.0005, clipnorm=2)
+    adam = optimizers.Adam(lr=0.001, decay=0.0001, clipnorm=2)
     model.compile(loss=binary_focal_loss(), optimizer=adam, metrics=['accuracy',tf.keras.metrics.Precision(name='precision'),tf.keras.metrics.Recall(name='recall')])
     
     return model
@@ -77,7 +77,7 @@ def CNN_ts():
 
     model = Model(ip, out)
 
-    adam = optimizers.Adam(lr=0.001, decay=0.0005)
+    adam = optimizers.Adam(lr=0.001, decay=0.0001)
     model.compile(loss=binary_focal_loss(), optimizer=adam, metrics=['accuracy',tf.keras.metrics.Precision(name='precision'),tf.keras.metrics.Recall(name='recall')])
     
     return model
