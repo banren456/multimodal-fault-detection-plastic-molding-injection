@@ -48,6 +48,11 @@ def skewed_fusion(y1,y2):
             res.append(1)
     return res
 
+"""
+Referecene from: https://github.com/umbertogriffo/focal-loss-keras/blob/master/src/loss_function/losses.py
+awesome implementation of the focal loss in python, Keras(tf backend)
+"""
+
 def binary_focal_loss(gamma=2., alpha=.25):
     def binary_focal_loss_fixed(y_true, y_pred):
         y_true = tf.cast(y_true, tf.float32)
